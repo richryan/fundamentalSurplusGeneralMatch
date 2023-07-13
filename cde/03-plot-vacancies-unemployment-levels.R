@@ -25,6 +25,7 @@ library(here)
 
 input_file <- "dat_02-get-vacancies-unemployment_2023-07-11.csv"
 file_prg <- "03-plot-vacancies-unemployment-levels"
+file_out <- c("out")
 
 # Golden ratio plotting parameters
 mywidth <- 6
@@ -137,7 +138,7 @@ plt_vacancies_unemployment <- ggplot(data = dat) +
   theme_light()
 
 fout_name <- paste0("fig_", file_prg, ".pdf")
-fout <- here("top", fout_name)
+fout <- here(file_out, fout_name)
 ggsave(fout, plot = last_plot(), 
        width = mywidth, height = myheight)
 
@@ -193,6 +194,6 @@ ggplot(data = dat_bound) +
   theme_light()
 
 fout_name <- paste0("fig_", file_prg, "-bound.pdf")
-fout <- here("top", fout_name)
+fout <- here(file_out, fout_name)
 ggsave(fout, plot = last_plot(), 
        width = mywidth, height = myheight)

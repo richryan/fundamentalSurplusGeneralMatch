@@ -16,6 +16,7 @@ library(cowplot)
 library(here)
 
 file_prg <- "01-du-dy"
+file_out <- c("out")
 
 # Golden ratio plotting parameters
 mywidth <- 6
@@ -299,7 +300,7 @@ ggplot(data = econ) +
   scale_color_viridis_d(option = "cividis", end = 1.0) # magma, plasma, viridis, cividis
 
 fig_out <- paste0("fig_", file_prg, ".pdf")
-ggsave(here("top", fig_out),
+ggsave(here(file_out, fig_out),
        width = mywidth, height = myheight) 
 
 # Plot monthly job-finding rate ---------------------------------------------------
@@ -318,7 +319,7 @@ ggplot(data = econ) +
   scale_color_viridis_d(option = "plasma") # magma, plasma, viridis, cividis
 
 fig_out <- paste0("fig_", file_prg, "-job-finding.pdf")
-ggsave(here("top", fig_out),
+ggsave(here(file_out, fig_out),
        width = mywidth, height = myheight) 
 
 # Plot job-filling rate ---------------------------------------------------
@@ -337,7 +338,7 @@ ggplot(data = econ) +
   scale_color_viridis_d(option = "magma", begin = 0.1, end = 0.8) # magma, plasma, viridis, cividis
 
 fig_out <- paste0("fig_", file_prg, "-job-filling.pdf")
-ggsave(here("top", fig_out),
+ggsave(here(file_out, fig_out),
        width = mywidth, height = myheight) 
 
 
@@ -387,5 +388,5 @@ plot_grid(plot_theta_elasticity + xlab(NULL) + theme(panel.grid.major = element_
           ncol = 1, labels = c("A", "B"), hjust = 0.1)
 
 fig_out <- paste0("fig_", file_prg, "-elasticities.pdf")
-ggsave(here("top", fig_out),
+ggsave(here(file_out, fig_out),
        width = myheight, height = mywidth) 
