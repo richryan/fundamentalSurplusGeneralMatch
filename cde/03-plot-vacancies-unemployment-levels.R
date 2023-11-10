@@ -145,6 +145,24 @@ ggsave(fout, plot = last_plot(),
 # Add caption
 (plt_vacancies_unemployment + labs(x = "", y = "Millions", color = "", linetype = "", caption = mycap))
 
+
+# Plot Beveridge-curve relationship ---------------------------------------
+
+dat_wide <- dat %>% 
+  pivot_wider(id_cols = date, names_from = FRED_symbol, values_from = lvl_millions)
+
+ggplot(data = dat_wide) +
+  geom_point(mapping = aes(x = UNEMPLOY, y = JTSJOL), 
+             color = csub_blue) +
+  labs(x = "Unemployment level, millions",
+       y = "Vacancies, millions") +
+  theme_light()  
+
+fout_bev <- paste0("fig_", file_prg, "-beveridge.pdf")
+fout <- here(file_out, fout_bev)
+ggsave(fout, plot = last_plot(), 
+       width = mywidth, height = myheight)
+
 # Plot bounds or inverse of elasticity of matching wrt unemployment --------------------------------------------------------------
 
 ggamma <- 1.27
